@@ -30,7 +30,6 @@ class Login extends Component {
     this.setState({ [name]: value} )
   }
 
-
   render() {
     return(
       <section className='login-page'>
@@ -55,7 +54,10 @@ class Login extends Component {
       </section>
     )
   }
-
 }
+
+export const mapDispatchToProps = (dispatch) => ({
+  signIn: (email, name) => dispatch(signIn(email, name))
+})
 
 export default Login

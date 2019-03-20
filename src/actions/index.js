@@ -1,5 +1,5 @@
-export const signIn = (email, password) => ({
+export const signIn = (email, name) => ({
   type: 'SIGN_IN',
   email,
-  password
+  name
 })
