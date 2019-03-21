@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Login from '../login/Login'
-import { Movies } from '../../components/Movies/Movies'
+import Movies from '../../components/Movies/Movies'
 import './App.css'
 import { Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux';
@@ -12,8 +12,6 @@ class App extends Component {
 
     }
   }
-
-  
 
   render() {
     return (

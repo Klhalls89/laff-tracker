@@ -3,3 +3,7 @@ export const signIn = (email, name) => ({
   email,
   name
 })
+
+export const signOut = () => ({
+  type: 'SIGN_OUT'
+})
