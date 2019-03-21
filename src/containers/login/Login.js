@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import * as API from '../../APIcalls'
 import { connect } from 'react-redux'
 import { signIn } from '../../actions'
-import { Redirect } from 'react-router'
+import { Redirect } from 'react-router-dom'
 
 export class Login extends Component {
   constructor() {
@@ -11,7 +11,8 @@ export class Login extends Component {
       email: '',
       password: '',
       invalidPassword: false,
-      invalidEmail: false
+      invalidEmail: false,
+      signInSuccessful: false
     }
   }
 
@@ -19,15 +20,14 @@ export class Login extends Component {
     e.preventDefault()
     const { email, password } = this.state
     const users = await API.signIn()
-    const validateUser = users.data.forEach(user => {
+    users.data.forEach(user => {
       if (user.email === email && user.password === password) {
         this.props.signIn(user.email, user.name)
-        // <Redirect to='/' />
+        this.setState({signInSuccessful: true})
       } else if (user.email === email && user.password !== password) {
          this.setState({ invalidPassword: true })
       } else {
-        this.setState({ invalidEmail: true })
-        console.log('.')
+        this.setState({ invalidEmail: true, invalidPassword: false })
       }
     })
   }
@@ -38,7 +38,10 @@ export class Login extends Component {
   }
 
   render() {
-    const { invalidEmail, invalidPassword } = this.state
+    const { invalidEmail, invalidPassword, signInSuccessful } = this.state
+    if (signInSuccessful) {
+      return <Redirect to='/' />
+    }
     return(
       <section className='login-page'>
         <form onSubmit={this.handleSubmit} >
