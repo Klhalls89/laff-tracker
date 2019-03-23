@@ -10,26 +10,20 @@ export class Login extends Component {
     this.state = {
       email: '',
       password: '',
-      invalidPassword: false,
-      invalidEmail: false,
+      signInUnsuccessful: false,
       signInSuccessful: false
     }
   }
 
   handleSubmit = async (e) => {
     e.preventDefault()
-    const { email, password } = this.state
-    const users = await API.signIn()
-    users.data.forEach(user => {
-      if (user.email === email && user.password === password) {
-        this.props.signIn(user.email, user.name)
-        this.setState({signInSuccessful: true})
-      } else if (user.email === email && user.password !== password) {
-         this.setState({ invalidPassword: true })
-      } else {
-        this.setState({ invalidEmail: true, invalidPassword: false })
-      }
-    })
+    const loginAttempt = await API.signIn(this.state)
+    if (loginAttempt.status === 'success') {
+      this.props.signIn(loginAttempt.name, loginAttempt.id)
+      this.setState({signInSuccessful: true})
+    } else {
+      this.setState({ signInUnsuccessful: true })
+    }
   }
 
   handleInputChange = (e) => {
@@ -38,7 +32,7 @@ export class Login extends Component {
   }
 
   render() {
-    const { invalidEmail, invalidPassword, signInSuccessful } = this.state
+    const { signInUnsuccessful, signInSuccessful } = this.state
     if (signInSuccessful) {
       return <Redirect to='/' />
     }
@@ -53,14 +47,13 @@ export class Login extends Component {
                   value={this.state.email} 
                   onChange={this.handleInputChange}
           />
-          { invalidEmail ? <p>The email you entered is not valid</p> : undefined  }
           <input  type="password" 
                   name="password" 
                   placeholder="password" 
                   value={this.state.password}
                   onChange={this.handleInputChange}
           />
-          { invalidPassword ? <p>The password you entered is incorrect</p> : undefined  }
+          { signInUnsuccessful ? <p>The username or password you entered is invalid</p> : undefined  }
           <button type="submit">Sign In</button>
           <p>Don't have an account? Sign up <span>here</span></p>
         </form>
