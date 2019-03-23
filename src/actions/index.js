@@ -1,6 +1,6 @@
-export const signIn = (email, name) => ({
+export const signIn = (id, name) => ({
   type: 'SIGN_IN',
-  email,
+  id,
   name
 })
 
