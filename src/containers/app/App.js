@@ -17,7 +17,7 @@ class App extends Component {
     return (
       <div className="App">
         <Route exact path="/" render={() => (
-          !this.props.user.email ? (
+          !this.props.user.name ? (
             <Redirect to="/login"/>
           ) : (
             <Redirect to="/movies"/>
