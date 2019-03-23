@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Login from '../login/Login'
-import Movies from '../../components/Movies/Movies'
+import Movies from '../Movies/Movies'
 import { SignUp } from '../signUp/SignUp'
 import './App.css'
 import { Route, Redirect } from 'react-router-dom'
@@ -9,9 +9,6 @@ import { connect } from 'react-redux';
 class App extends Component {
   constructor() {
     super()
-    this.state = {
-
-    }
   }
 
   render() {

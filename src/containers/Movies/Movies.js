@@ -1,20 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { signOut } from '../../actions'
+import { signOut, displayMovies } from '../../actions'
 import { Link } from 'react-router-dom'
 import * as API from '../../APIcalls'
 
 export class Movies extends Component {
   constructor() {
     super()
-    this.state = {
-      movies: []
-    }
   }
 
-  componentDidMount() {
-    const movies = API.fetchMovies()
-    this.setState({ movies })
+  componentDidMount = async () => {
+    const movies = await API.fetchMovies()
+    await this.props.displayMovies(movies)
   }
 
   handleSignOut = () => {
@@ -35,9 +32,9 @@ export class Movies extends Component {
   }
 }
 
-
 export const mapDispatchToProps = (dispatch) => ({
-  signOut: () => dispatch(signOut())
+  signOut: () => dispatch(signOut()),
+  displayMovies: (movies) => dispatch(displayMovies(movies))
 })
 
 export default connect(null, mapDispatchToProps)(Movies)
