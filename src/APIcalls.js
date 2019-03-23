@@ -1,3 +1,5 @@
+import { movieCleaner } from './cleaner'
+
 const API_KEY = `${process.env.REACT_APP_API_KEY}`
 
 export const signIn = async (userInfo) => {
@@ -42,5 +44,6 @@ export const fetchMovies = async () => {
   const url = 'https://api.themoviedb.org/3/discover/movie?api_key=' + API_KEY + '&with_genres=35'
   const response = await fetch(url)
   const movies = await response.json()
-  await console.log(movies)
+  const cleanMovies = await movieCleaner(movies)
+  return cleanMovies
 }
