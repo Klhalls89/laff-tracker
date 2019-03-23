@@ -1,25 +1,40 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { signOut } from '../../actions'
 import { Link } from 'react-router-dom'
+import * as API from '../../APIcalls'
 
-export const Movies = (props) => {
-
-  const handleSignOut = () => {
-    props.signOut()
+export class Movies extends Component {
+  constructor() {
+    super()
+    this.state = {
+      movies: []
+    }
   }
 
-  return(
-    <section>
-      <nav>
-        <Link to='/login'>
-          <button onClick={handleSignOut}>Sign Out</button>
-        </Link>
-      </nav>
-      MOVIES!
-    </section>  
-  )
+  componentDidMount() {
+    const movies = API.fetchMovies()
+    this.setState({ movies })
+  }
+
+  handleSignOut = () => {
+    this.props.signOut()
+  }
+
+  render () {
+    return(
+      <section>
+        <nav>
+          <Link to='/login'>
+            <button onClick={this.handleSignOut}>Sign Out</button>
+          </Link>
+        </nav>
+        MOVIES!
+      </section>  
+    )
+  }
 }
+
 
 export const mapDispatchToProps = (dispatch) => ({
   signOut: () => dispatch(signOut())
