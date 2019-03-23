@@ -26,8 +26,3 @@ export const mapDispatchToProps = (dispatch) => ({
 })
 
 export default connect(null, mapDispatchToProps)(Movies)
-
-//Add button for signout
-//create action
-//handle in reducer, turn to {}
-//will we need to redirect to '/' or will app automatically redirect to sign in?
