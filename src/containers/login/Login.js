@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import * as API from '../../APIcalls'
 import { connect } from 'react-redux'
 import { signIn } from '../../actions'
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 
 export class Login extends Component {
   constructor() {
@@ -55,7 +55,7 @@ export class Login extends Component {
           />
           { signInUnsuccessful ? <p>The username or password you entered is invalid</p> : undefined  }
           <button type="submit">Sign In</button>
-          <p>Don't have an account? Sign up <span>here</span></p>
+          <p>Don't have an account? Sign up <Link to='/signup'><button>here</button></Link></p>
         </form>
       </section>
     )
