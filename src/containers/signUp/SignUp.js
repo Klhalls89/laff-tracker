@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import * as API from '../../APIcalls'
+import { Redirect, Link } from 'react-router-dom'
 
 export class SignUp extends Component {
   constructor() {
@@ -9,7 +10,8 @@ export class SignUp extends Component {
       email: '',
       password: '',
       signUpSuccessful: false,
-      signUpUnsuccessful: false
+      signUpUnsuccessful: false,
+      redirect: false
     }
   }
 
@@ -22,6 +24,7 @@ export class SignUp extends Component {
     e.preventDefault()
     const signUpStatus = await API.signUp(this.state)
     if (signUpStatus === 'success') {
+      setTimeout(() => this.setState({ redirect: true }), 2000)
       this.setState({ signUpSuccessful: true, signUpUnSuccessful: false })
     } else {
       this.setState({ signUpUnsuccessful: true })
@@ -29,11 +32,14 @@ export class SignUp extends Component {
   }
 
   render() {
-    const { signUpSuccessful, signUpUnsuccessful } = this.state
+    const { signUpSuccessful, signUpUnsuccessful, redirect } = this.state
+    if (redirect) {
+      return <Redirect to='/' />
+    }
     return(
       <section>
-        { signUpSuccessful ? <p></p> : undefined}
-        { signUpUnSuccessful ? <p>Sorry, that email is already in use. Please enter a new email</p> : undefined}
+        { signUpSuccessful ? <p>Your account has been created! Redirecting to login page</p> : undefined }
+        { signUpUnsuccessful ? <p>Sorry, that email is already in use. Please enter a new email</p> : undefined}
         <h3>Sign up now to browse and save the best films in comedy!</h3>
         <form onSubmit={this.handleSubmit}>
           <input  type='text'
