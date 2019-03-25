@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import * as API from '../../APIcalls'
+import { connect } from 'react-redux'
 
 export class MovieCard extends Component {
   constructor() {
@@ -10,9 +11,10 @@ export class MovieCard extends Component {
   }
 
   render() {
+    console.log('user', this.props)
     return(
       <article>
-        <button >Favorite</button>
+        <button onClick={() => API.addFavorite( this.props.movie.id, this.props.user.id, this.props.movie)} >Favorite</button>
         <h3>{this.props.movie.title}</h3>
         <p>{this.props.movie.overview}</p>
         <p>{this.props.movie.release_date}</p>
@@ -20,5 +22,10 @@ export class MovieCard extends Component {
       </article>
     )
   }
-
 }
+
+export const mapStateToProps = (state) => ({
+  user: state.user
+})
+
+export default connect(mapStateToProps)(MovieCard)

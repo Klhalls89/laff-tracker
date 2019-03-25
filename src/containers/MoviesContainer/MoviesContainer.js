@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import * as API from '../../APIcalls'
 import { storeMovies, signOut} from '../../actions'
-import { MovieCard } from '../../components/MovieCard/MovieCard'
+import MovieCard from '../MovieCard/MovieCard'
 
 export class MoviesContainer extends Component {
   constructor() {
