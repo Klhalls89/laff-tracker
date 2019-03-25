@@ -11,7 +11,6 @@ export class MovieCard extends Component {
   }
 
   render() {
-    console.log('user', this.props)
     return(
       <article>
         <button onClick={() => API.addFavorite( this.props.movie.id, this.props.user.id, this.props.movie)} >Favorite</button>

@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux'
 import { userReducer } from './userReducer'
 import { moviesReducer } from './moviesReducer'
+import { favoritesReducer } from './favoritesReducer'
 
 export const rootReducer = combineReducers({
   user: userReducer,
-  movies: moviesReducer
+  movies: moviesReducer,
+  favorites: favoritesReducer
 })
