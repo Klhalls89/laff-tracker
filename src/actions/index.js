@@ -8,7 +8,7 @@ export const signOut = () => ({
   type: 'SIGN_OUT'
 })
 
-export const displayMovies = (movies) => ({
-  type: 'DISPLAY_MOVIES',
+export const storeMovies = (movies) => ({
+  type: 'STORE_MOVIES',
   movies
 })

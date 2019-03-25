@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { signOut, displayMovies } from '../../actions'
+import { signOut, storeMovies } from '../../actions'
 import { Link } from 'react-router-dom'
 import * as API from '../../APIcalls'
+import MovieCard from '../MovieCard.js'
 
 export class Movies extends Component {
   constructor() {
@@ -11,11 +12,17 @@ export class Movies extends Component {
 
   componentDidMount = async () => {
     const movies = await API.fetchMovies()
-    await this.props.displayMovies(movies)
+    await this.props.storeMovies(movies)
   }
 
   handleSignOut = () => {
     this.props.signOut()
+  }
+  
+  displayCard = (props) => {
+   return props.movies.map((movie)=> {
+      return <MovieCard movie={movie}/>
+    })
   }
 
   render () {
@@ -26,15 +33,20 @@ export class Movies extends Component {
             <button onClick={this.handleSignOut}>Sign Out</button>
           </Link>
         </nav>
-        MOVIES!
+        <h2>Funny Movies</h2>
+        {this.displayCard}
       </section>  
     )
   }
 }
 
-export const mapDispatchToProps = (dispatch) => ({
-  signOut: () => dispatch(signOut()),
-  displayMovies: (movies) => dispatch(displayMovies(movies))
+export const mapStateToProps = (props) => ({
+  movies: props.movies
 })
 
-export default connect(null, mapDispatchToProps)(Movies)
+export const mapDispatchToProps = (dispatch) => ({
+  signOut: () => dispatch(signOut()),
+  storeMovies: (movies) => dispatch(storeMovies(movies))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Movies)
