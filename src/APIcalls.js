@@ -47,3 +47,16 @@ export const fetchMovies = async () => {
   const cleanMovies = await movieCleaner(movies)
   return cleanMovies
 }
+
+export const addFavorite = async (movie_id, user_id, movie) => {
+  const url = 'http://localhost:3000/api/users/favorites/new'
+  const response = await fetch(url, {
+    method: 'POST',
+    body: JSON.stringify({movie_id, user_id, title: movie.title, poster_path: movie.poster_path, release_date: movie.release_date, vote_average: movie.vote_average, overview: movie.overview}),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  const newFavorite = await response.json()
+  console.log('newFavorite!', newFavorite)
+}

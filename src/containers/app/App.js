@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Login from '../login/Login'
-import Movies from '../Movies/Movies'
+import MoviesContainer from '../MoviesContainer/MoviesContainer'
 import { SignUp } from '../signUp/SignUp'
 import './App.css'
 import { Route, Redirect } from 'react-router-dom'
@@ -22,7 +22,7 @@ class App extends Component {
           )
         )}/>
         <Route exact path='/login' component={Login} />
-        <Route exact path='/movies' component={Movies} />
+        <Route exact path='/movies' component={MoviesContainer} />
         <Route exact path='/signup' component={SignUp} />
       </div>
     );
