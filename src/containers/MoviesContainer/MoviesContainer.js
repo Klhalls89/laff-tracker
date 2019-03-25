@@ -28,6 +28,9 @@ export class MoviesContainer extends Component {
     return(
       <section>
         <nav>
+          <Link to='/favorites'>
+            <button>Favorites</button>
+          </Link>
           <Link to='/login'>
             <button onClick={this.handleSignOut}>Sign Out</button>
           </Link>

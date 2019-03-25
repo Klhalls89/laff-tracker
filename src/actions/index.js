@@ -12,3 +12,8 @@ export const storeMovies = (movies) => ({
   type: 'STORE_MOVIES',
   movies
 })
+
+export const storeFavorites = (favorites) => ({
+  type: 'STORE_FAVORITES',
+  favorites
+})
