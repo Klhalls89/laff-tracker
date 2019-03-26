@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import * as API from '../../APIcalls'
+import './_signUp.scss'
 import { Redirect, Link } from 'react-router-dom'
 
 export class SignUp extends Component {
@@ -37,7 +38,7 @@ export class SignUp extends Component {
       return <Redirect to='/' />
     }
     return(
-      <section>
+      <section className="signup-page"> 
         { signUpSuccessful ? <p>Your account has been created! Redirecting to login page</p> : undefined }
         { signUpUnsuccessful ? <p>Sorry, that email is already in use. Please enter a new email</p> : undefined}
         <h3>Sign up now to browse and save the best films in comedy!</h3>

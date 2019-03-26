@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import * as API from '../../APIcalls'
 import { connect } from 'react-redux'
 import { signIn } from '../../actions'
+import './_login.scss'
 import { Redirect, Link } from 'react-router-dom'
 
 export class Login extends Component {
@@ -39,8 +40,8 @@ export class Login extends Component {
     return(
       <section className='login-page'>
         <form onSubmit={this.handleSubmit} >
-          <h2>Laff Tracker</h2>
-          <p>Welcome! Please sign in</p>
+          <h2 className="logo">Laff Tracker</h2>
+          <p className="welcome">Welcome!</p>
           <input  type="email" 
                   name="email" 
                   placeholder="email" 
@@ -54,8 +55,8 @@ export class Login extends Component {
                   onChange={this.handleInputChange}
           />
           { signInUnsuccessful ? <p>The username or password you entered is invalid</p> : undefined  }
-          <button type="submit">Sign In</button>
-          <p>Don't have an account? Sign up <Link to='/signup'><button>here</button></Link></p>
+          <button className="signin-btn" type="submit">Sign In</button>
+          <p>Don't have an account? Sign up <Link to='/signup'><button className="signup-btn">here</button></Link></p>
         </form>
       </section>
     )
