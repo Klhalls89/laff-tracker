@@ -30,7 +30,7 @@ export class FavoritesContainer extends Component {
 
   render () {
     const displayFavorites = this.props.favorites.map(movie => {
-      return <MovieCard movie={movie} />
+      return <MovieCard movie={movie} movieID={movie.movie_id} />
     })
 
     return(
