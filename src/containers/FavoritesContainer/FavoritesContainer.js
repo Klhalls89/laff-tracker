@@ -15,7 +15,8 @@ export class FavoritesContainer extends Component {
 
   componentDidMount = async () => {
     const favorites = await API.fetchFavorites(this.props.user.id)
-    if (favorites.status === 'success') {
+    console.log(favorites.status)
+    if (favorites.data.length > 0) {
       await this.props.storeFavorites(favorites.data)
       await this.setState({ favoritesEmpty: false })
     } else {
@@ -29,17 +30,20 @@ export class FavoritesContainer extends Component {
 
   render () {
     const displayFavorites = this.props.favorites.map(movie => {
-      return <MovieCard movie={movie} />
+      return <MovieCard movie={movie} movieID={movie.movie_id} />
     })
+
     return(
       <section>
         <nav>
+          <h1>Laff Tracker</h1>
           <Link to='/movies'>
             <button>Top Comedies</button>
           </Link>
           <Link to='/login'>
             <button onClick={this.handleSignOut}>Sign Out</button>
           </Link>
+          <p>Welcome, {this.props.user.name}</p>
         </nav>
         { displayFavorites }
         { this.state.favoritesEmpty ? <p>You don't have any favorite movies yet</p> : undefined }

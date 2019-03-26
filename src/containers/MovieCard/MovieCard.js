@@ -13,24 +13,27 @@ export class MovieCard extends Component {
 
   handleFavorite = async (movieTitle, movieID) => {
     const foundFavorite = this.props.favorites.find(favorite => favorite.title === movieTitle)
-    console.log(foundFavorite)
+    // console.log(foundFavorite)
     if (foundFavorite === undefined) {
       await API.addFavorite( this.props.movie.id, this.props.user.id, this.props.movie)
     } else {
       await API.deleteFavorite(this.props.user.id, movieID)
     }
     const favorites = await API.fetchFavorites(this.props.user.id)
+    console.log('favorites', favorites)
     await this.props.storeFavorites(favorites.data)
   }
 
   render() {
+    const { movie } = this.props
     return(
       <article>
-        <button onClick={() => this.handleFavorite(this.props.movie.title, this.props.movie.id)} >Favorite</button>
-        <h3>{this.props.movie.title}</h3>
-        <p>{this.props.movie.overview}</p>
-        <p>{this.props.movie.release_date}</p>
-        <p>{this.props.movie.vote_average}</p>
+        <button onClick={() => this.handleFavorite(movie.title, this.props.movieID)} >Favorite</button>
+        <h3>{movie.title}</h3>
+        <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} />
+        <p>{movie.overview}</p>
+        <p>{movie.release_date}</p>
+        <p>{movie.vote_average}</p>
       </article>
     )
   }

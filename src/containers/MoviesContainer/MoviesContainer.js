@@ -28,7 +28,7 @@ export class MoviesContainer extends Component {
 
   render () {
     const displayMovies = this.props.movies.map(movie => {
-      return <MovieCard movie={movie} />
+      return <MovieCard movie={movie} movieID={movie.id} />
     })
     return(
       <section>
