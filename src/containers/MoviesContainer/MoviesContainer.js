@@ -4,7 +4,9 @@ import { Link } from 'react-router-dom'
 import * as API from '../../APIcalls'
 import { storeFavorites, storeMovies, signOut} from '../../actions'
 import MovieCard from '../MovieCard/MovieCard'
+import { fetchMovies } from '../../thunks/thunk'
 import './_movieContainer.scss'
+const API_KEY = `${process.env.REACT_APP_API_KEY}`
 
 export class MoviesContainer extends Component {
   constructor() {
@@ -14,8 +16,9 @@ export class MoviesContainer extends Component {
   }
 
   componentDidMount = async () => {
-    const movies = await API.fetchMovies()
-    await this.props.storeMovies(movies)
+    const url = 'https://api.themoviedb.org/3/discover/movie?api_key=' + API_KEY + '&with_genres=35'
+    const movies = await fetchMovies(url)
+    // await this.props.storeMovies(movies)
     const favorites = await API.fetchFavorites(this.props.user.id)
     if (favorites.data) {
       await this.props.storeFavorites(favorites.data)

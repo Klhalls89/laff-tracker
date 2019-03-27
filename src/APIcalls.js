@@ -40,13 +40,13 @@ export const signUp = async (userInfo) => {
   }
 }
 
-export const fetchMovies = async () => {
-  const url = 'https://api.themoviedb.org/3/discover/movie?api_key=' + API_KEY + '&with_genres=35'
-  const response = await fetch(url)
-  const movies = await response.json()
-  const cleanMovies = await movieCleaner(movies)
-  return cleanMovies
-}
+// export const fetchMovies = async () => {
+//   const url = 'https://api.themoviedb.org/3/discover/movie?api_key=' + API_KEY + '&with_genres=35'
+//   const response = await fetch(url)
+//   const movies = await response.json()
+//   const cleanMovies = await movieCleaner(movies)
+//   return cleanMovies
+// }
 
 export const addFavorite = async (movie_id, user_id, movie) => {
   try {
