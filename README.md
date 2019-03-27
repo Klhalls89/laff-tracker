@@ -23,4 +23,8 @@ React JSX Sass Fetch API Redux
 <img width="726" alt="Screen Shot 2019-03-26 at 10 31 37 PM" src="https://user-images.githubusercontent.com/41968928/55050573-fe739100-5016-11e9-8fda-4d2b199e57f1.png">
 <img width="726" alt="Screen Shot 2019-03-26 at 10 31 54 PM" src="https://user-images.githubusercontent.com/41968928/55050577-04697200-5017-11e9-99de-91000fa0cadd.png">
 
+## Contributers
+Kristen Hallstrom
+Justin Torrance
+
 
