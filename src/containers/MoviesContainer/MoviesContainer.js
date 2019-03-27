@@ -17,7 +17,6 @@ export class MoviesContainer extends Component {
     const movies = await API.fetchMovies()
     await this.props.storeMovies(movies)
     const favorites = await API.fetchFavorites(this.props.user.id)
-    console.log('favorites:', favorites.data)
     if (favorites.data) {
       await this.props.storeFavorites(favorites.data)
     }
