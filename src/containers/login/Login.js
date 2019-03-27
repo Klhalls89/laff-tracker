@@ -41,7 +41,7 @@ export class Login extends Component {
       <section className='login-page'>
         <form onSubmit={this.handleSubmit} >
           <p className="logo">Laff Tracker</p>
-          <p className="welcome">Welcome!</p>
+          <p className="welcome-login-word">Welcome!</p>
           <input  type="email" 
                   name="email" 
                   placeholder="email" 
@@ -54,7 +54,7 @@ export class Login extends Component {
                   value={this.state.password}
                   onChange={this.handleInputChange}
           />
-          { signInUnsuccessful ? <p>The username or password you entered is invalid</p> : undefined  }
+          { signInUnsuccessful ? <p className="error-msg">The username or password you entered is invalid</p> : undefined  }
           <button className="signin-btn" type="submit">Sign In</button>
           <p>Don't have an account? Sign up <Link to='/signup'><button className="signup-btn">here</button></Link></p>
         </form>

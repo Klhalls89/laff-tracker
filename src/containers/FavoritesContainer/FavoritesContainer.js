@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 import * as API from '../../APIcalls'
 import { storeFavorites, signOut} from '../../actions'
 import MovieCard from '../MovieCard/MovieCard'
+import '../MoviesContainer/_movieContainer.scss'
+
 
 export class FavoritesContainer extends Component {
   constructor() {
@@ -35,18 +37,22 @@ export class FavoritesContainer extends Component {
 
     return(
       <section>
-        <nav>
-          <h1>Laff Tracker</h1>
+        <header className="movie-header">
+          <h1 className="logo">Laff Tracker</h1>
+          <nav>
           <Link to='/movies'>
             <button>Top Comedies</button>
           </Link>
           <Link to='/login'>
             <button onClick={this.handleSignOut}>Sign Out</button>
           </Link>
-          <p>Welcome, {this.props.user.name}</p>
         </nav>
-        { displayFavorites }
-        { this.state.favoritesEmpty ? <p>You don't have any favorite movies yet</p> : undefined }
+        <p className="welcome">Welcome, {this.props.user.name}</p>
+        </header>
+        <article className="movie-container">
+          { displayFavorites }
+          { this.state.favoritesEmpty ? <p>You don't have any favorite movies yet</p> : undefined }
+        </article>
       </section>  
     )
   }
