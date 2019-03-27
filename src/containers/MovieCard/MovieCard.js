@@ -14,14 +14,12 @@ export class MovieCard extends Component {
 
   handleFavorite = async (movieTitle, movieID) => {
     const foundFavorite = this.props.favorites.find(favorite => favorite.title === movieTitle)
-    // console.log(foundFavorite)
     if (foundFavorite === undefined) {
       await API.addFavorite( this.props.movie.id, this.props.user.id, this.props.movie)
     } else {
       await API.deleteFavorite(this.props.user.id, movieID)
     }
     const favorites = await API.fetchFavorites(this.props.user.id)
-    console.log('favorites', favorites)
     await this.props.storeFavorites(favorites.data)
   }
 

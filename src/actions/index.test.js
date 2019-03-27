@@ -20,4 +20,24 @@ describe ('actions', () => {
         const result = actions.signOut()
         expect(result).toEqual(expected)
     })
+
+    it('should return a type of STORE_MOVIES with an array of movies', () => {
+        const movies = [{title: 'Space Jam'}, {title: 'Interstellar'}]
+        const expected = {
+            type: 'STORE_MOVIES',
+            movies
+        }
+        const result = actions.storeMovies(movies)
+        expect(result).toEqual(expected)
+    })
+
+    it('should return a type of STORE_FAVORITES with an array of favorites', () => {
+        const favorites = [{title: 'Space Jam'}, {title: 'Interstellar'}]
+        const expected = {
+            type: 'STORE_FAVORITES',
+            favorites
+        }
+        const result = actions.storeFavorites(favorites)
+        expect(result).toEqual(expected)
+    })
 })

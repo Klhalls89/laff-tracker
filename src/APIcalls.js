@@ -76,7 +76,6 @@ export const deleteFavorite = async (user_id, movie_id) => {
       }
     })
     const deletedFavorite = await response.json()
-    console.log(deletedFavorite)
   } catch(error) {
       return error
   }

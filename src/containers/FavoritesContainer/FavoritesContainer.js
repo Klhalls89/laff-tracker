@@ -17,7 +17,6 @@ export class FavoritesContainer extends Component {
 
   componentDidMount = async () => {
     const favorites = await API.fetchFavorites(this.props.user.id)
-    console.log(favorites.status)
     if (favorites.data.length > 0) {
       await this.props.storeFavorites(favorites.data)
       await this.setState({ favoritesEmpty: false })
