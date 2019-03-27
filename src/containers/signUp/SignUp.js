@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import * as API from '../../APIcalls'
 import { Redirect, Link } from 'react-router-dom'
+import '../login/_login.scss'
 
 export class SignUp extends Component {
   constructor() {
@@ -37,11 +38,12 @@ export class SignUp extends Component {
       return <Redirect to='/' />
     }
     return(
-      <section>
+      <section className="login-page">
         { signUpSuccessful ? <p>Your account has been created! Redirecting to login page</p> : undefined }
         { signUpUnsuccessful ? <p>Sorry, that email is already in use. Please enter a new email</p> : undefined}
-        <h3>Sign up now to browse and save the best films in comedy!</h3>
-        <form onSubmit={this.handleSubmit}>
+        <p className="logo">Laff Tracker</p>
+        <p>Sign up now to browse and save the best films in comedy!</p>
+        <form className="signup-form" onSubmit={this.handleSubmit}>
           <input  type='text'
                   value={this.state.name}
                   name='name'
@@ -60,7 +62,7 @@ export class SignUp extends Component {
                   onChange={this.handleInputChange}
                   placeholder='password'
           />
-          <button type='submit'>Sign Up</button>
+          <button className="signin-btn" type='submit'>Sign Up</button>
         </form>
       </section>
     )
