@@ -3,7 +3,7 @@ import Login from '../login/Login'
 import MoviesContainer from '../MoviesContainer/MoviesContainer'
 import FavoritesContainer from '../FavoritesContainer/FavoritesContainer'
 import { SignUp } from '../signUp/SignUp'
-import './App.css'
+import './App.scss'
 import { Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux';
 
