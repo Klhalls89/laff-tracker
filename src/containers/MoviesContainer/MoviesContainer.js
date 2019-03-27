@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import * as API from '../../APIcalls'
 import { storeFavorites, storeMovies, signOut} from '../../actions'
 import MovieCard from '../MovieCard/MovieCard'
+import './_movieContainer.scss'
 
 export class MoviesContainer extends Component {
   constructor() {
@@ -31,16 +32,21 @@ export class MoviesContainer extends Component {
       return <MovieCard movie={movie} movieID={movie.id} />
     })
     return(
-      <section>
-        <nav>
-          <Link to='/favorites'>
-            <button>Favorites</button>
-          </Link>
-          <Link to='/login'>
-            <button onClick={this.handleSignOut}>Sign Out</button>
-          </Link>
-        </nav>
+      <section className="movie-page">
+        <header className="movie-header">
+          <p className="logo">Laff Tracker</p>
+          <nav>
+            <Link to='/favorites'>
+              <button>Favorites</button>
+            </Link>
+            <Link to='/login'>
+              <button onClick={this.handleSignOut}>Sign Out</button>
+            </Link>
+          </nav>
+        </header>
+        <article className="movie-container">
         { displayMovies }
+        </article>
       </section>  
     )
   }

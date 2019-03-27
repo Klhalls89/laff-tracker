@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import * as API from '../../APIcalls'
 import { connect } from 'react-redux'
 import { storeFavorites } from '../../actions'
+import './_movieCard.scss'
 
 export class MovieCard extends Component {
   constructor() {
@@ -27,13 +28,15 @@ export class MovieCard extends Component {
   render() {
     const { movie } = this.props
     return(
-      <article>
+      <article className="movie-card">
         <button onClick={() => this.handleFavorite(movie.title, this.props.movieID)} >Favorite</button>
-        <h3>{movie.title}</h3>
         <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} />
-        <p>{movie.overview}</p>
-        <p>{movie.release_date}</p>
-        <p>{movie.vote_average}</p>
+        <div className="hideOrShow">
+          <h3>{movie.title}</h3>
+          <p>{movie.overview}</p>
+          <p>{movie.release_date}</p>
+          <p>{movie.vote_average}</p>
+        </div>
       </article>
     )
   }

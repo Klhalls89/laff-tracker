@@ -1,0 +1,34 @@
+
+.movie-container {
+  background-image: url('../../brick.jpg');
+  background-repeat: repeat-y;
+  background-size: cover;
+  display: grid;
+  grid-gap: 1%;
+  grid-template-columns: repeat(4, 1fr);
+  min-height: 100%;
+  padding: 0px 0px 100px 20px;
+}
+
+.welcome {
+  color: #fff;
+}
+
+.movie-header {
+  align-items: baseline;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.hideOrShow {
+  display: none;
+}
+
+.hideOrShow :hover {
+  display: inline;
+}
+
+button {
+  border-radius: 50px;
+  margin-left: 3px;
+}

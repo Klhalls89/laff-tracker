@@ -1,51 +1,55 @@
 .login-page {
+    align-items: center;
     background: rgba(255,255,255,0.9);
-    text-align: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    height: 90%;
     justify-content: center;
     margin: auto;
-    padding: 2%;
-    height: 85%;
-    width: 40%;
     min-width: 400px;
+    padding: 2% 2% 10% 2%;
+    text-align: center;
+    width: 40%;
 }
 
 .logo {
-    margin-top: 0;
-    font-family: Alfa Slab One;
-    font-weight: normal;
-    font-size: 50px;
     color: #FFBF00;
+    font-family: Alfa Slab One;
+    font-size: 50px;
+    font-weight: normal;
+    margin-top: 0;
     text-shadow: .5px .5px  rgba(85, 85, 85, 0.25);
 }
 
-.welcome {
-    font-size: 25px;
+.error-msg {
+  font-size: 14px;
+}
+
+.welcome-login-word {
+    font-size: 20px;
 }
 
 input {
-    display: block;
-    height: 10%;
     background-color: rgba(255, 255, 255, 1);
-    box-shadow: 1px 2px 2px rgba(255, 191, 0, 0.25);
-    border-top: 0px;
     border-left: 0px;
     border-radius: 50px;
+    border-top: 0px;
+    box-shadow: 1px 2px 2px rgba(255, 191, 0, 0.25);
+    display: block;
+    height: 10%;
     margin: 10px;
     width: 90%;
 }
 
 ::placeholder {
-    text-align: center;
+    color: #AAA;
     font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
     font-style: normal;
     font-weight: normal;
-    font-size: 16px;
     line-height: normal;
-    color: #AAA;
     padding: 5px;
+    text-align: center;
 }
 
 .signup-form {
@@ -54,23 +58,23 @@ input {
 }
 
 .signin-btn {
-    border-top: 0px;
-    border-left: 0px;
     background: #FFBF00;
-    box-shadow: 0px 4px 4px rgba(255, 191, 0, 0.25);
+    border-left: 0px;
     border-radius: 50px;
-    height: 11%;
+    border-top: 0px;
+    box-shadow: 0px 4px 4px rgba(255, 191, 0, 0.25);
     color: #FFF;
     font-size: 16px;
+    height: 11%;
     width: 50%;
 }
 
 .signup-btn {
-    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0);
     border: 0px;
     color: #FFBF00;
     font-size: 16px;
+    font-weight: bold;
     padding: 0px;
-    background-color: rgba(255, 255, 255, 0);
     text-shadow: .5px .5px  rgba(85, 85, 85, 0.25);
   }
